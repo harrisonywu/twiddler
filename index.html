@@ -3,22 +3,57 @@
   <head>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <link href="main.css" type="text/css" rel="stylesheet">
+    <style>
+    </style>
   </head>
   <body>
+    
+
     <script>
 
       $(document).ready(function(){
         var $body = $('body');
         $body.html('');
+        
+        var $heading = $("<heading >Twiddler</heading>");
+          $heading.appendTo($body); 
+
+        var $button = $("<button id='refreshTweetsButton'>Refresh Tweets</button>"); //Note to self: it's like like doc.createEle
+          $button.appendTo($body);
+          $button.click(function() {
+          //when pressed, will generate new tweets
+        });
 
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          var $tweetUsername = $('<button></button>');  // the username of the person tweeting
+          $tweetUsername.text('@'+tweet.user+': ');
+
+          var $tweet = $('<div></div>');   //the tweet message itself
+          $tweet.text(tweet.message);
+          $tweet.addClass('tweet');
           $tweet.appendTo($body);
+          $tweetUsername.prependTo($tweet);
+          
+          var $time = $('<small></small>'); //time stamps of each tweet
+            $time.text(tweet.created_at);
+            $time.appendTo($tweet);
+          
+
+          // $tweetUserName.click(function() {
+          //   //will show user tweet hsitory;
+              //HUGE NOTE: THIS FUNCTION ACTUALLY BREAKS MY CODE WHEN ITS EMPTY
+          // });
+
           index -= 1;
+
+
+      
+         
         }
+
 
       });
 
