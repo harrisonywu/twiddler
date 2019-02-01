@@ -19,40 +19,53 @@
         var $heading = $("<heading >Twiddler</heading>");
           $heading.appendTo($body); 
 
-        var $button = $("<button id='refreshTweetsButton'>Refresh Tweets</button>"); //Note to self: it's like like doc.createEle
-          $button.appendTo($body);
-          $button.click(function() {
+        var $button = $("<button id='refreshTweetsButton'>Refresh Tweets</button>");
+        $button.appendTo($body);
+        
+        var $tweetList = $('<div></div>');
+        var $userTweets = $('<div></div>');
+        
+        $button.click(function() {
           //when pressed, will generate new tweets
-        });
+          $tweetList.empty();
+          $userTweets.empty();
+          var index = streams.home.length - 1;
+          while(index >= 0){
+            var tweet = streams.home[index];
 
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweetUsername = $('<button></button>');  // the username of the person tweeting
-          $tweetUsername.text('@'+tweet.user+': ');
 
-          var $tweet = $('<div></div>');   //the tweet message itself
-          $tweet.text(tweet.message);
-          $tweet.addClass('tweet');
-          $tweet.appendTo($body);
-          $tweetUsername.prependTo($tweet);
+            var $tweetUsername = $('<button></button>');  // the username of the person tweeting
+            $tweetUsername.text('@'+tweet.user+': ');
+
+            var $tweet = $('<p></p>');   //the tweet message itself
+            $tweet.text(tweet.message);
+            $tweet.addClass('tweet');
+            // $tweet.appendTo($body);
+            $tweetUsername.prependTo($tweet);
+
+            if (index % 2 === 0) {
+              $tweet.addClass('evenIndex');
+            } else if (index % 2 === 1) {
+              $tweet.addClass('oddIndex');
+            }
           
-          var $time = $('<small></small>'); //time stamps of each tweet
+            var $time = $('<small></small>'); //time stamps of each tweet
             $time.text(tweet.created_at);
             $time.appendTo($tweet);
-          
 
-          // $tweetUserName.click(function() {
-          //   //will show user tweet hsitory;
-              //HUGE NOTE: THIS FUNCTION ACTUALLY BREAKS MY CODE WHEN ITS EMPTY
-          // });
+            $tweet.appendTo($tweetList);
+            index -= 1;
 
-          index -= 1;
-
-
-      
-         
-        }
+          }
+            $tweetList.appendTo($body);
+        });
+        // $tweetUserName.click(function() {
+        //     //will show user tweet hsitory;
+        //     //  HUGE NOTE: THIS FUNCTION ACTUALLY BREAKS MY CODE WHEN ITS EMPTY
+        //     for(var i=0;i<tweet.user;i++) {
+        //       $tweet.text(streams.users[i]);
+        //     }
+        //   });
 
 
       });
