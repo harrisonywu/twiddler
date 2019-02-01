@@ -7,7 +7,6 @@ small {
 	float: right;
 	width: 500px;
 	box-sizing: border-box;
-	border: 3px solid red;
 
 }
 
@@ -22,14 +21,23 @@ button.user {
 	width: auto;
 	box-sizing: border-box;
 	height: 50px;
+	margin-right: 50px;
+
+
 }
 
 
 heading {
 	font-size: 60px;
 	display: inline-block;
-	margin: 20px 20px;
+	margin: 60px 20px;
 	width:100%;
+	border: 1px solid green;
+	text-align: center;
+	font-family: monospace;
+	background-color: SkyBlue;
+	color: white;
+
 }
 
 .tweet {
@@ -37,5 +45,14 @@ heading {
 	box-sizing: border-box;
 	height: 50px;
 	border: 1px solid blue;
+	color: black;
 }
 
+
+.evenIndex {
+	background-color: rgb(95, 194, 221);
+}
+
+.oddIndex {
+	background-color: rgb(239, 137, 0);
+}
