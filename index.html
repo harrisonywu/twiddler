@@ -43,6 +43,10 @@
             // $tweet.appendTo($body);
             $tweetUsername.prependTo($tweet);
 
+            $tweetUsername.click(function() {
+              //when clicked, show the selected users old tweets
+            })
+
             if (index % 2 === 0) {
               $tweet.addClass('evenIndex');
             } else if (index % 2 === 1) {
